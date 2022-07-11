@@ -18,4 +18,13 @@ body {
 		'Helvetica Neue', sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	background: linear-gradient(
+		to right bottom,
+		#1a3224,
+		#1f3826,
+		#263f27,
+		#2d4528,
+		#364b28
+	);
+	/* background-image: linear-gradient(to top, #1e3829e0, #00000000); */
 }
