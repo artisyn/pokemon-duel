@@ -1,26 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import PageRoutes from './pages/PageRoutes';
+
+import { useSelector, useDispatch } from 'react-redux';
+import { currentPageChange } from './features/CurrentPage/currentPageSlice';
+import { RootState } from '../src/store/store';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const dispatch = useDispatch();
+	dispatch(currentPageChange('New'));
+	const currentPage = useSelector(
+		(state: RootState) => state.currentPage.value
+	);
+
+	return (
+		<div>
+			<PageRoutes />
+		</div>
+	);
 }
 
 export default App;
