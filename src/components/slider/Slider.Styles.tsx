@@ -5,7 +5,7 @@ interface SlideHolderInterface {
 
 export const Container = styled.div`
 	border: 1px solid white;
-	height: 50vh;
+	min-height: 50vh;
 	position: relative;
 	display: flex;
 	align-items: center;
@@ -24,30 +24,44 @@ export const Decoration = styled.div`
 	z-index: -1;
 `;
 export const Wrapper = styled.div`
+	border: 3px solid black;
+	border-radius: 1rem;
 	overflow: hidden;
-	width: 70vw;
-	height: 100%;
+	width: 25rem;
+	height: 40rem;
 `;
 
 export const SlidesHolder = styled.div<SlideHolderInterface>`
-	width: 70vw;
+	/* width: 25rem; */
+	width: 100%;
 	height: 100%;
 	display: flex;
 	align-items: center;
 	justify-content: flex-start;
 
-	transform: translateX(${(props) => props.slideIndex * -70}vw);
+	transform: translateX(${(props) => props.slideIndex * -100}%);
 	transition: transform ease-out 0.8s;
 `;
 export const BackArrow = styled.div`
-	background-color: white;
-	border-radius: 40%;
-	height: 1.5rem;
+	height: 3rem;
 	width: 3rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+	cursor: pointer;
 `;
 export const ForwardArrow = styled.div`
-	background-color: white;
-	border-radius: 40%;
-	height: 1.5rem;
+	height: 3rem;
 	width: 3rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+	cursor: pointer;
+`;
+export const PokeballImage = styled.img`
+	height: 100%;
+	object-fit: contain;
+	object-position: center;
 `;
