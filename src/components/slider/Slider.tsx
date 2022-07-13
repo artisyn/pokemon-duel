@@ -1,4 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
+import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 
 import axios from 'axios';
 import {
@@ -9,6 +10,8 @@ import {
 	SlidesHolder,
 	Wrapper,
 	PokeballImage,
+	MobileArrowB,
+	MobileArrowF,
 } from './Slider.Styles';
 import SliderItem from './sliderItem/SliderItem';
 import logoUrl from '../../assets/pokeball.png';
@@ -45,6 +48,7 @@ const Slider: FC = () => {
 					return data;
 				})();
 			});
+
 			const resolvedPromises = await Promise.all(promises);
 			if (pokemons.length < 9) {
 				setPokemons(resolvedPromises);
@@ -89,6 +93,13 @@ const Slider: FC = () => {
 			</BackArrow>
 
 			<Wrapper>
+				<MobileArrowB>
+					<IoIosArrowBack
+						onClick={() => {
+							prevSlide();
+						}}
+					/>
+				</MobileArrowB>
 				<SlidesHolder slideIndex={slideIndex}>
 					{pokemons.length > 0
 						? pokemons.map((el, i) => (
@@ -96,6 +107,13 @@ const Slider: FC = () => {
 						  ))
 						: ''}
 				</SlidesHolder>
+				<MobileArrowF>
+					<IoIosArrowForward
+						onClick={() => {
+							nextSlide();
+						}}
+					/>
+				</MobileArrowF>
 			</Wrapper>
 
 			<ForwardArrow

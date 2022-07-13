@@ -10,6 +10,11 @@ export const BackgroundImage = styled.img`
 	width: 100%;
 	object-fit: cover;
 	object-position: center;
+	@media only screen and (max-width: 1100px) {
+		min-height: 100%;
+		object-fit: cover;
+		width: auto;
+	} ;
 `;
 export const BottomDimmer = styled.div`
 	position: absolute;

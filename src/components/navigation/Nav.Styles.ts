@@ -12,7 +12,6 @@ export const Container = styled.div`
 	z-index: 1000;
 `;
 export const LogoContainer = styled.div`
-	border: 1px solid white;
 	width: 5rem;
 	height: 4rem;
 	display: flex;
@@ -30,7 +29,7 @@ export const NavigationContainer = styled.div`
 	justify-content: center;
 	flex-direction: row;
 	gap: 1rem;
-	border: 1px solid white;
+
 	width: 100%;
 	height: 100%;
 	color: white;
@@ -39,5 +38,9 @@ export const NavigationContainer = styled.div`
 `;
 
 export const NavItem = styled.div`
+	transition: all ease 0.4s;
 	cursor: pointer;
+	&:hover {
+		color: #cc354b;
+	}
 `;

@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
 	Container,
 	LogoContainer,
@@ -9,15 +10,28 @@ import {
 import pokeballLogo from '../../assets/pokeballLogo.png';
 
 const Nav: FC = () => {
+	const navigate = useNavigate();
 	return (
 		<Container>
 			<LogoContainer>
 				<PokeballImg src={pokeballLogo} />
 			</LogoContainer>
 			<NavigationContainer>
-				<NavItem>Home</NavItem>
+				<NavItem
+					onClick={() => {
+						navigate('/Home');
+					}}
+				>
+					Home
+				</NavItem>
 				<NavItem>Rules</NavItem>
-				<NavItem>Pokedex</NavItem>
+				<NavItem
+					onClick={() => {
+						navigate('/Pokedex');
+					}}
+				>
+					Pokedex
+				</NavItem>
 				<NavItem>Tournament</NavItem>
 			</NavigationContainer>
 		</Container>

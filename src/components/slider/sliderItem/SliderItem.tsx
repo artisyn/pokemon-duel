@@ -1,6 +1,10 @@
 import React, { FC, useState } from 'react';
 import logo from '../../../assets/111.jpg';
-import { PokeType } from '../../../helpers/pokemonTypes';
+import {
+	calculateColor,
+	changeStatName,
+	determineStatColor,
+} from '../../../helpers/pokemonHelperFunctions';
 import {
 	Container,
 	PokemonImage,
@@ -41,46 +45,6 @@ interface SliderItemProps {
 }
 
 const SliderItem: FC<SliderItemProps> = ({ pokemon }) => {
-	const calculateColor = (type: string): string => {
-		if (type === 'bug') return PokeType.bug;
-		if (type === 'dark') return PokeType.dark;
-		if (type === 'flying') return PokeType.flying;
-		if (type === 'dragon') return PokeType.dragon;
-		if (type === 'electric') return PokeType.electric;
-		if (type === 'grass') return PokeType.grass;
-		if (type === 'poison') return PokeType.poison;
-		if (type === 'ice') return PokeType.ice;
-		if (type === 'ground') return PokeType.ground;
-		if (type === 'water') return PokeType.water;
-		if (type === 'fairy') return PokeType.fairy;
-		if (type === 'fight') return PokeType.fight;
-		if (type === 'fire') return PokeType.fire;
-		if (type === 'psychic') return PokeType.psychic;
-		if (type === 'normal') return PokeType.normal;
-		if (type === 'ghost') return PokeType.ghost;
-		if (type === 'rock') return PokeType.rock;
-		if (type === 'steel') return PokeType.steel;
-		return '';
-	};
-
-	const changeStatName = (str: string) => {
-		if (str === 'hp') return 'HP';
-		if (str === 'attack') return 'ATT';
-		if (str === 'defense') return 'DEF';
-		if (str === 'special-attack') return 'SATK';
-		if (str === 'special-defense') return 'SDEF';
-		if (str === 'speed') return 'SPD';
-	};
-	const determineStatColor = (str: string): string => {
-		if (str === 'hp') return '#bb423e';
-		if (str === 'attack') return '#eea235';
-		if (str === 'defense') return '#3f88e5';
-		if (str === 'special-attack') return '#9e6e23';
-		if (str === 'special-defense') return '#27568d';
-		if (str === 'speed') return '#8da7bd';
-		return '';
-	};
-
 	return (
 		<Container>
 			<TopPicture color={calculateColor(pokemon.types[0].type.name)}>
