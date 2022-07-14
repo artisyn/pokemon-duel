@@ -19,6 +19,27 @@ export enum PokeType {
 	fairy = '#e6b9bc',
 }
 
+export enum PokeTypeLight {
+	normal = '#a8a77b2f',
+	fight = '#af3f2b2a',
+	flying = '#a393ec26',
+	poison = '#934a9d31',
+	ground = '#dac0702e',
+	rock = '#b3a14428',
+	bug = '#cfd55f31',
+	ghost = '#6c5b9533',
+	steel = '#b8b8cf41',
+	fire = '#df853b2a',
+	water = '#7290ec3a',
+	grass = '#8dc45c2c',
+	electric = '#f0d14826',
+	psychic = '#e4668832',
+	ice = '#a7d6d834',
+	dragon = '#6845f237',
+	dark = '#6c594937',
+	fairy = '#e6b9bc32',
+}
+
 export const calculateColor = (type: string): string => {
 	if (type === 'bug') return PokeType.bug;
 	if (type === 'dark') return PokeType.dark;
@@ -40,6 +61,27 @@ export const calculateColor = (type: string): string => {
 	if (type === 'steel') return PokeType.steel;
 	return '';
 };
+export const calculateLightColor = (type: string): string => {
+	if (type === 'bug') return PokeTypeLight.bug;
+	if (type === 'dark') return PokeTypeLight.dark;
+	if (type === 'flying') return PokeTypeLight.flying;
+	if (type === 'dragon') return PokeTypeLight.dragon;
+	if (type === 'electric') return PokeTypeLight.electric;
+	if (type === 'grass') return PokeTypeLight.grass;
+	if (type === 'poison') return PokeTypeLight.poison;
+	if (type === 'ice') return PokeTypeLight.ice;
+	if (type === 'ground') return PokeTypeLight.ground;
+	if (type === 'water') return PokeTypeLight.water;
+	if (type === 'fairy') return PokeTypeLight.fairy;
+	if (type === 'fighting') return PokeTypeLight.fight;
+	if (type === 'fire') return PokeTypeLight.fire;
+	if (type === 'psychic') return PokeTypeLight.psychic;
+	if (type === 'normal') return PokeTypeLight.normal;
+	if (type === 'ghost') return PokeTypeLight.ghost;
+	if (type === 'rock') return PokeTypeLight.rock;
+	if (type === 'steel') return PokeTypeLight.steel;
+	return '';
+};
 
 export const changeStatName = (str: string) => {
 	if (str === 'hp') return 'HP';
@@ -58,3 +100,18 @@ export const determineStatColor = (str: string): string => {
 	if (str === 'speed') return '#8da7bd';
 	return '';
 };
+
+export interface PokemonObject {
+	name: string;
+	id: number;
+	sprites: {
+		front_default: string;
+		front_shiny?: string;
+	};
+	types: [{ slot: number; type: { name: string; url: string } }];
+	species: { name: string };
+	weight: number;
+	height: number;
+	stats: [{ base_stat: number; effort: number; stat: { name: string } }];
+	abilities: [{ name: string }];
+}

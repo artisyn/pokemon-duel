@@ -10,6 +10,9 @@ export const Container = styled.div`
 	display: flex;
 	align-items: center;
 	z-index: 1000;
+	@media only screen and (max-width: 700px) {
+		padding: 0.5rem;
+	}
 `;
 export const LogoContainer = styled.div`
 	width: 5rem;
@@ -17,6 +20,10 @@ export const LogoContainer = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	@media only screen and (max-width: 700px) {
+		width: 2.5rem;
+		height: 2rem;
+	}
 `;
 export const PokeballImg = styled.img`
 	max-height: 100%;
@@ -35,6 +42,10 @@ export const NavigationContainer = styled.div`
 	color: white;
 	font-size: 1.3rem;
 	font-weight: bold;
+	@media only screen and (max-width: 700px) {
+		font-size: 1rem;
+		font-weight: 500;
+	}
 `;
 
 export const NavItem = styled.div`
