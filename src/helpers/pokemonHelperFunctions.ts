@@ -108,7 +108,10 @@ export interface PokemonObject {
 		front_default: string;
 		front_shiny?: string;
 	};
-	types: [{ slot: number; type: { name: string; url: string } }];
+	types: [
+		{ slot: number; type: { name: string; url: string } },
+		{ slot: number; type: { name: string; url: string } }?
+	];
 	species: { name: string };
 	weight: number;
 	height: number;

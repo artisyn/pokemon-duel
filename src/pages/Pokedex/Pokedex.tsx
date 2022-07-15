@@ -8,7 +8,8 @@ import {
 	TitleContainer,
 	Title,
 } from './Pokedex.Styles';
-import PokedexComponent from './pokedexComponent/PokedexComponent';
+import Carousel from './carousel/Carousel';
+import StatsInfo from './statsInfo/StatsInfo';
 
 const Pokedex: FC = () => {
 	return (
@@ -19,24 +20,25 @@ const Pokedex: FC = () => {
 				<TitleContainer>
 					<Title>Welcome To Pokedex</Title>
 				</TitleContainer>
-				<PokedexComponent type={'flying'} />
-				<PokedexComponent type={'normal'} />
-				<PokedexComponent type={'fighting'} />
-				<PokedexComponent type={'poison'} />
-				<PokedexComponent type={'ground'} />
-				<PokedexComponent type={'rock'} />
-				<PokedexComponent type={'bug'} />
-				<PokedexComponent type={'ghost'} />
-				<PokedexComponent type={'steel'} />
-				<PokedexComponent type={'fire'} />
-				<PokedexComponent type={'water'} />
-				<PokedexComponent type={'grass'} />
-				<PokedexComponent type={'electric'} />
-				<PokedexComponent type={'psychic'} />
-				<PokedexComponent type={'ice'} />
-				<PokedexComponent type={'dragon'} />
-				<PokedexComponent type={'dark'} />
-				<PokedexComponent type={'fairy'} />
+				<StatsInfo />
+				<Carousel type={'flying'} />
+				<Carousel type={'normal'} />
+				<Carousel type={'fighting'} />
+				<Carousel type={'poison'} />
+				<Carousel type={'ground'} />
+				<Carousel type={'rock'} />
+				<Carousel type={'bug'} />
+				<Carousel type={'ghost'} />
+				<Carousel type={'steel'} />
+				<Carousel type={'fire'} />
+				<Carousel type={'water'} />
+				<Carousel type={'grass'} />
+				<Carousel type={'electric'} />
+				<Carousel type={'psychic'} />
+				<Carousel type={'ice'} />
+				<Carousel type={'dragon'} />
+				<Carousel type={'dark'} />
+				<Carousel type={'fairy'} />
 			</PokedexContainer>
 			<Footer />
 		</Container>

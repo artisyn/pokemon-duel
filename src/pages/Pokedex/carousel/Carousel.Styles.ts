@@ -21,7 +21,7 @@ export const Title = styled.h1<TitleProps>`
 	padding: 1rem;
 	margin: 0;
 `;
-export const Wrapper = styled(motion.div)`
+export const Wrapper = styled.div`
 	width: 100%;
 	overflow: hidden;
 `;
@@ -32,4 +32,8 @@ export const AllPokemonsContainer = styled(motion.div)`
 	align-items: center;
 	justify-content: flex-start;
 	cursor: grab;
+	width: fit-content;
+	&:active {
+		cursor: grabbing;
+	}
 `;

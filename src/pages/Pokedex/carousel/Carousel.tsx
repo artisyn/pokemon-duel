@@ -13,18 +13,22 @@ import {
 	AllPokemonsContainer,
 	Wrapper,
 	Title,
-} from '../pokedexComponent/PokedexComponent.Styles';
-import PokedexCard from '../pokedexCard/PokedexCard';
+} from './Carousel.Styles';
+import CarouselItem from '../carouselItem/CarouselItem';
 interface PokedexComponentProps {
 	type: string;
 }
+interface PokemonUrl {
+	pokemon: {
+		name: string;
+		url: string;
+	};
+}
 
-const PokedexComponent: FC<PokedexComponentProps> = ({ type }) => {
+const Carousel: FC<PokedexComponentProps> = ({ type }) => {
 	const dispatch = useDispatch();
-	const [allPokemons, setAllPokemons] = useState<[] | PokemonObject[]>([]);
+	const [allPokemons, setAllPokemons] = useState<[] | PokemonUrl[]>([]);
 	const [loading, setLoading] = useState<boolean>(true);
-	const [maxWidth, setMaxWidth] = useState<number>(0);
-
 	const wrapperRef = useRef<HTMLDivElement | null>(null);
 
 	const [url, setUrl] = useState<string>(
@@ -33,37 +37,12 @@ const PokedexComponent: FC<PokedexComponentProps> = ({ type }) => {
 	const fetchPokemonData = async (str: string) => {
 		try {
 			const rawData = await axios.get(str);
-			console.log(rawData.data);
-			setAllPokemons(rawData.data.pokemons);
-			const refinedData: any = rawData.data.pokemon.map((el: any) => {
-				return (async () => {
-					const { data } = await axios.get(el.pokemon.url);
-					return data;
-				})();
-			});
-
-			const resolvedData: PokemonObject[] = await Promise.all(
-				refinedData
-			);
-			setAllPokemons(resolvedData);
-
-			// console.log(resolvedData);
+			setAllPokemons(rawData.data.pokemon);
 		} catch (err) {
 			console.log(err);
 		} finally {
 			setLoading(false);
-			setMaxWidth(calculateWidth());
 		}
-	};
-
-	const calculateWidth = (): number => {
-		let max: number = 0;
-		if (wrapperRef.current?.scrollWidth !== undefined) {
-			max =
-				wrapperRef.current?.scrollWidth -
-				wrapperRef.current?.offsetWidth;
-		}
-		return max;
 	};
 
 	useEffect(() => {
@@ -77,16 +56,14 @@ const PokedexComponent: FC<PokedexComponentProps> = ({ type }) => {
 				'Loading Please wait'
 			) : (
 				<Wrapper ref={wrapperRef}>
-					<AllPokemonsContainer
-						drag="x"
-						dragConstraints={{
-							right: 0,
-							left: -maxWidth,
-						}}
-					>
-						{allPokemons.map((el, i) => (
-							<PokedexCard key={i} pokemon={el} />
-						))}
+					<AllPokemonsContainer drag="x" dragConstraints={wrapperRef}>
+						{allPokemons
+							.filter((el, i) => {
+								return i < 10;
+							})
+							.map((el, i) => (
+								<CarouselItem key={i} pokemon={el} />
+							))}
 					</AllPokemonsContainer>
 				</Wrapper>
 			)}
@@ -94,4 +71,4 @@ const PokedexComponent: FC<PokedexComponentProps> = ({ type }) => {
 	);
 };
 
-export default PokedexComponent;
+export default Carousel;

@@ -8,10 +8,16 @@ interface TypeCircleProps {
 	bcolor: string;
 }
 
-export const Container = styled(motion.div)<ContainerProps>`
+export const Wrapper = styled.div`
 	min-width: 20vw;
 	max-width: 20vw;
 	height: 30vw;
+`;
+
+export const Container = styled(motion.div)<ContainerProps>`
+	min-width: 20vw;
+	max-width: 20vw;
+	height: 27vw;
 	border: 2px solid ${(props) => props.bcolor};
 	border-radius: 0.5rem;
 	display: flex;
@@ -28,7 +34,7 @@ export const ImgHolder = styled.div`
 	overflow: hidden;
 	margin-top: 1rem;
 	border-radius: 50%;
-	width: 80%;
+	width: 75%;
 	height: 50%;
 	background: linear-gradient(
 		to bottom,
@@ -47,6 +53,7 @@ export const Image = styled.img`
 	max-width: 100%;
 	object-fit: contain;
 	object-position: center;
+	pointer-events: none;
 `;
 
 export const Name = styled.span`
@@ -114,4 +121,21 @@ export const ParameterName = styled.span`
 	font-size: 1rem;
 	font-weight: 500;
 	color: grey;
+`;
+
+export const TypesContainer = styled.div`
+	display: flex;
+`;
+
+export const TypeName = styled.span`
+	color: white;
+`;
+export const TypeTitle = styled.span`
+	color: grey;
+	margin-right: 0.4rem;
+`;
+export const Separator = styled.span`
+	margin-left: 0.3rem;
+	margin-right: 0.3rem;
+	color: white;
 `;
