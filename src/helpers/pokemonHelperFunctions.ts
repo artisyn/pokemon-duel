@@ -118,3 +118,12 @@ export interface PokemonObject {
 	stats: [{ base_stat: number; effort: number; stat: { name: string } }];
 	abilities: [{ name: string }];
 }
+
+export interface RelationsObject {
+	double_damage_from: [{ name: string; url: string }];
+	double_damage_to: [{ name: string; url: string }];
+	half_damage_from: [{ name: string; url: string }];
+	half_damage_to: [{ name: string; url: string }];
+	no_damage_from: [{ name: string; url: string }];
+	no_damage_to: [{ name: string; url: string }];
+}

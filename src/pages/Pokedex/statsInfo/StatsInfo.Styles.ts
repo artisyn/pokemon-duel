@@ -28,7 +28,7 @@ export const rotation = keyframes`
 `;
 
 export const Container = styled.div`
-	min-height: 30vh;
+	height: 22rem;
 	margin-bottom: 1rem;
 	display: flex;
 	align-items: center;
@@ -42,9 +42,9 @@ export const Container = styled.div`
 	z-index: 1000;
 `;
 export const CardContainer = styled.div<CardContainerProps>`
-	min-width: 20vw;
-	max-width: 20vw;
-	height: 27vw;
+	min-width: 13rem;
+	max-width: 13rem;
+	height: 18rem;
 	border: 2px solid ${(props) => props.bcolor};
 	border-radius: 0.5rem;
 	display: flex;
@@ -158,7 +158,7 @@ export const TypesContainer = styled.div`
 `;
 
 export const TypeName = styled.span`
-	color: white;
+	color: ${(props) => (props.color ? props.color : 'white')};
 `;
 export const TypeTitle = styled.span`
 	color: grey;
@@ -176,12 +176,13 @@ export const StatsContainer = styled.div<TypeCircleProps>`
 	flex-direction: column;
 	align-items: center;
 	justify-content: flex-start;
-	min-height: 27vw;
-	max-width: 25vw;
+	min-height: 17rem;
+	max-width: 17rem;
+	height: 18rem;
 	border: 2px solid ${(props) => props.bcolor};
 	border-radius: 0.5rem;
 	background-color: #282828;
-	padding: 1rem;
+	padding: 0.5rem 1rem;
 `;
 
 export const BottomTitle = styled.h1`
@@ -245,8 +246,9 @@ export const RelationsContainer = styled.div<TypeCircleProps>`
 	flex-direction: column;
 	gap: 1rem;
 	background-color: #282828;
-	height: 27vw;
-	padding: 1rem;
+	height: 18rem;
+	max-width: 20rem;
+	padding: 0.5rem 1rem;
 `;
 
 export const RelationsTitle = styled.h1`
@@ -254,4 +256,37 @@ export const RelationsTitle = styled.h1`
 	font-weight: normal;
 	font-size: 1.5rem;
 `;
-export const RelationsStatsContainer = styled.div``;
+export const RelationsStatsContainer = styled.div`
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: space-evenly;
+`;
+export const RelationsItem = styled.div`
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+	gap: 0rem;
+	flex-direction: column;
+	font-size: 0.7rem;
+`;
+
+export const RelationsItemTitle = styled.span`
+	color: white;
+	font-size: 0.7rem;
+`;
+export const RelationsItemType = styled.div`
+	font-size: 0.7rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.3rem;
+`;
+export const TypeVal = styled.span<TypeCircleProps>`
+	background-color: ${(props) => props.bcolor};
+	font-size: 0.7rem;
+	padding: 0.2rem;
+	border-radius: 0.3rem;
+`;

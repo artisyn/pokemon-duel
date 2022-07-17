@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectedPokemonChange } from '../../../features/SelectedPokemon/SelectedPokemonSlice';
 import { RootState } from '../../../store/store';
+import { RelationsObject } from '../../../helpers/pokemonHelperFunctions';
+import UserPokedex from '../userPokedex/UserPokedex';
 import {
 	calculateColor,
 	changeStatName,
@@ -35,6 +37,10 @@ import {
 	StatValueContainer,
 	RelationsStatsContainer,
 	RelationsTitle,
+	RelationsItemType,
+	RelationsItem,
+	RelationsItemTitle,
+	TypeVal,
 } from './StatsInfo.Styles';
 import axios from 'axios';
 
@@ -43,6 +49,7 @@ const StatsInfo = () => {
 	const cardRef = useRef<null | HTMLDivElement>(null);
 	const [animate, setAnimate] = useState<boolean>(false);
 	const [index, setIndex] = useState<number>(1);
+	const [relations, setRelations] = useState<null | RelationsObject>(null);
 	// dispatch(selectedPokemon(data)
 	const selectedPokemon = useSelector(
 		(state: RootState) => state.selectedPokemon.value
@@ -53,7 +60,6 @@ const StatsInfo = () => {
 		return result;
 	};
 
-	// figure out rotation
 	useEffect(() => {
 		setAnimate(true);
 
@@ -64,11 +70,12 @@ const StatsInfo = () => {
 
 	useEffect(() => {
 		(async () => {
-			const xs = await axios.get(
+			const response = await axios.get(
 				`https://pokeapi.co/api/v2/type/${selectedPokemon.types[0].type.name}`
 			);
-			console.log(xs.data.damage_relations);
-			/// figure out set data
+			setRelations(response.data.damage_relations);
+			// console.log(response.data);
+			console.log(relations?.double_damage_from);
 		})();
 	}, [selectedPokemon]);
 
@@ -121,7 +128,11 @@ const StatsInfo = () => {
 						</TypeName>
 					) : (
 						<>
-							<TypeName>
+							<TypeName
+								color={calculateColor(
+									selectedPokemon?.types[0]?.type.name
+								)}
+							>
 								{selectedPokemon?.types[0]?.type.name
 									? capitalizeFirstLetter(
 											selectedPokemon?.types[0]?.type.name
@@ -135,7 +146,7 @@ const StatsInfo = () => {
 											selectedPokemon?.types[1]?.type.name
 									  )
 									: ''}
-							</TypeName>{' '}
+							</TypeName>
 						</>
 					)}
 				</TypesContainer>
@@ -166,8 +177,157 @@ const StatsInfo = () => {
 				bcolor={calculateColor(selectedPokemon.types[0].type.name)}
 			>
 				<RelationsTitle>Type Relations</RelationsTitle>
-				<RelationsStatsContainer></RelationsStatsContainer>
+				<RelationsStatsContainer>
+					{relations === null ? (
+						''
+					) : (
+						<>
+							<RelationsItem>
+								<RelationsItemTitle>
+									{relations === null
+										? ''
+										: 'Double Damage from:'}
+								</RelationsItemTitle>
+
+								{relations &&
+								relations.double_damage_from.length > 1 ? (
+									<RelationsItemType>
+										{relations.double_damage_from.map(
+											(el) => (
+												<TypeVal
+													bcolor={calculateColor(
+														el.name
+													)}
+												>
+													{el.name}
+												</TypeVal>
+											)
+										)}
+									</RelationsItemType>
+								) : (
+									'No Data'
+								)}
+							</RelationsItem>
+							<RelationsItem>
+								<RelationsItemTitle>
+									{relations === null
+										? ''
+										: 'Double Damage to:'}
+								</RelationsItemTitle>
+								{relations &&
+								relations.double_damage_to.length > 1 ? (
+									<RelationsItemType>
+										{relations.double_damage_to.map(
+											(el) => (
+												<TypeVal
+													bcolor={calculateColor(
+														el.name
+													)}
+												>
+													{el.name}
+												</TypeVal>
+											)
+										)}
+									</RelationsItemType>
+								) : (
+									'No Data'
+								)}
+							</RelationsItem>
+							<RelationsItem>
+								<RelationsItemTitle>
+									{relations === null
+										? ''
+										: 'Half Damage from:'}
+								</RelationsItemTitle>
+								{relations &&
+								relations?.half_damage_from.length > 1 ? (
+									<RelationsItemType>
+										{' '}
+										{relations?.half_damage_from.map(
+											(el) => (
+												<TypeVal
+													bcolor={calculateColor(
+														el.name
+													)}
+												>
+													{el.name}
+												</TypeVal>
+											)
+										)}{' '}
+									</RelationsItemType>
+								) : (
+									'No Data'
+								)}
+							</RelationsItem>
+							<RelationsItem>
+								<RelationsItemTitle>
+									{relations === null
+										? ''
+										: 'Half Damage to:'}
+								</RelationsItemTitle>
+								{relations &&
+								relations?.half_damage_to.length > 1 ? (
+									<RelationsItemType>
+										{' '}
+										{relations?.half_damage_to.map((el) => (
+											<TypeVal
+												bcolor={calculateColor(el.name)}
+											>
+												{el.name}
+											</TypeVal>
+										))}{' '}
+									</RelationsItemType>
+								) : (
+									'No Data'
+								)}
+							</RelationsItem>
+							<RelationsItem>
+								<RelationsItemTitle>
+									{relations === null
+										? ''
+										: 'No Damage from:'}
+								</RelationsItemTitle>
+								{relations &&
+								relations.no_damage_from.length > 1 ? (
+									<RelationsItemType>
+										{' '}
+										{relations?.no_damage_from.map((el) => (
+											<TypeVal
+												bcolor={calculateColor(el.name)}
+											>
+												{el.name}
+											</TypeVal>
+										))}{' '}
+									</RelationsItemType>
+								) : (
+									'No Data'
+								)}
+							</RelationsItem>
+							<RelationsItem>
+								<RelationsItemTitle>
+									{relations === null ? '' : 'No Damage to:'}
+								</RelationsItemTitle>
+								{relations &&
+								relations?.no_damage_to.length > 1 ? (
+									<RelationsItemType>
+										{' '}
+										{relations?.no_damage_to.map((el) => (
+											<TypeVal
+												bcolor={calculateColor(el.name)}
+											>
+												{el.name}
+											</TypeVal>
+										))}{' '}
+									</RelationsItemType>
+								) : (
+									'No Data'
+								)}
+							</RelationsItem>
+						</>
+					)}
+				</RelationsStatsContainer>
 			</RelationsContainer>
+			<UserPokedex />
 		</Container>
 	);
 };
