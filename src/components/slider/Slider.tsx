@@ -50,7 +50,6 @@ const Slider: FC = () => {
 			});
 
 			const resolvedPromises = await Promise.all(promises);
-			console.log(resolvedPromises);
 			if (pokemons.length < 9) {
 				setPokemons(resolvedPromises);
 			}

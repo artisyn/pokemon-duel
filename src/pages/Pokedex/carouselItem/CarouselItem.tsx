@@ -89,7 +89,6 @@ const CarouselItem: FC<PokemonUrl> = ({ pokemon }) => {
 					bcolor={backgroundColor}
 					ref={containerRef}
 					onClick={(e) => {
-						console.log(pokemonData?.name);
 						dispatch(selectedPokemonChange(pokemonData));
 					}}
 				>

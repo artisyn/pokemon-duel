@@ -12,6 +12,11 @@ export const Wrapper = styled.div`
 	min-width: 20vw;
 	max-width: 20vw;
 	height: 30vw;
+	@media only screen and (max-width: 1000px) {
+		min-width: 10rem;
+		max-width: 10rem;
+		height: 15rem;
+	}
 `;
 
 export const Container = styled(motion.div)<ContainerProps>`
@@ -28,6 +33,12 @@ export const Container = styled(motion.div)<ContainerProps>`
 	position: relative;
 	background-color: #282828;
 	gap: 0.5rem;
+
+	@media only screen and (max-width: 1000px) {
+		min-width: 10rem;
+		max-width: 10rem;
+		height: 15rem;
+	}
 `;
 
 export const ImgHolder = styled.div`
@@ -125,14 +136,21 @@ export const ParameterName = styled.span`
 
 export const TypesContainer = styled.div`
 	display: flex;
+	align-items: center;
 `;
 
 export const TypeName = styled.span`
 	color: white;
+	@media only screen and (max-width: 1000px) {
+		font-size: 0.7rem;
+	}
 `;
 export const TypeTitle = styled.span`
 	color: grey;
 	margin-right: 0.4rem;
+	@media only screen and (max-width: 1000px) {
+		font-size: 0.7rem;
+	}
 `;
 export const Separator = styled.span`
 	margin-left: 0.3rem;

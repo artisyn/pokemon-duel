@@ -101,6 +101,28 @@ export const determineStatColor = (str: string): string => {
 	return '';
 };
 
+export const shortenTypeName = (type: string): string => {
+	if (type === 'bug') return 'bug';
+	if (type === 'dark') return 'drk';
+	if (type === 'flying') return 'fly';
+	if (type === 'dragon') return 'dgn';
+	if (type === 'electric') return 'elc';
+	if (type === 'grass') return 'grs';
+	if (type === 'poison') return 'psn';
+	if (type === 'ice') return 'ice';
+	if (type === 'ground') return 'gnd';
+	if (type === 'water') return 'wtr';
+	if (type === 'fairy') return 'fry';
+	if (type === 'fighting') return 'fgt';
+	if (type === 'fire') return 'fir';
+	if (type === 'psychic') return 'psy';
+	if (type === 'normal') return 'nrm';
+	if (type === 'ghost') return 'ght';
+	if (type === 'rock') return 'rck';
+	if (type === 'steel') return 'stl';
+	return '';
+};
+
 export interface PokemonObject {
 	name: string;
 	id: number;
